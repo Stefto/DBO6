@@ -1,3 +1,12 @@
+DROP TABLE GerelateerdNieuws;
+DROP TABLE CategorieAbonnement;
+DROP TABLE Reactie;
+DROP TABLE Nieuwsbericht;
+DROP TABLE Auteur;
+DROP TABLE Categorie;
+DROP TABLE MailAbonnee;
+
+
 CREATE TABLE MailAbonnee
 (
 	id			int(10) PRIMARY KEY,

@@ -1,4 +1,8 @@
-begin
+    delimiter //
+  
+  create function randomString() returns varchar(10)
+	deterministic
+  begin
 	declare randString varchar(10);
   
 	set randString = concat(
