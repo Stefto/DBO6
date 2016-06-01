@@ -7,17 +7,18 @@ declare @obj int,
 
 SET @url = 'http://ws.cdyne.com/WeatherWS/GetCityWeatherByZIP'
 
-SET @requestBody = '<soapenv:Envelope>
-                     <soapenv:Header/>
-                      <soapenv:Body>
-						<GetCityWeatherByZIP xmlns="http://ws.cdyne.com/WeatherWS/">
-							<ZIP>10025</ZIP>
-						</GetCityWeatherByZIP>
-                      </soapenv:Body>
-                     </soapenv:Envelope>'
-
+SET @requestBody = '<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <GetCityWeatherByZIP xmlns="http://ws.cdyne.com/WeatherWS/">
+      <ZIP>10025</ZIP>
+    </GetCityWeatherByZIP>
+  </soap:Body>
+</soap:Envelope>
+<soapenv:Envelope>'
+					 
 EXEC sp_OACreate 'MSXML2.ServerXMLHttp', @obj OUT
-EXEC sp_OAMethod @obj, 'Open', NULL, 'GET', @url, false
+EXEC sp_OAMethod @obj, 'Open', NULL, 'POST', @url, false
 EXEC sp_OAMethod @obj, 'setRequestHeader', NULL, 'Content-Type', 'text/xml;charset=UTF-8'
 EXEC sp_OAMethod @obj, 'setRequestHeader', NULL, 'SOAPAction', 'POST'
 EXEC sp_OAMethod @obj, 'setRequestHeader', NULL, 'Content-Length',  LEN(select @requestBody)
