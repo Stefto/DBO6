@@ -39,8 +39,8 @@ CREATE TABLE Nieuwsbericht
 	berichtKop		VARCHAR(255),
 	bericht			VARCHAR(2048),
 	bronLink		VARCHAR(255),
-	categorieNaam		VARCHAR(64) REFERENCES Categorie(naam),
-	auteurId		int(10) REFERENCES Auteur(id)
+	categorieNaam		VARCHAR(64),
+	auteurId		int(10)
 );
 
 CREATE TABLE Reactie
@@ -50,20 +50,20 @@ CREATE TABLE Reactie
 	geplaatstOp		int,
 	ipAdres			VARCHAR(39),
 	reactieTekst		VARCHAR(1024),
-	zichtbaar		int(1),
-	nieuwsberichtId		int(10) REFERENCES Nieuwsbericht(id)
+	zichtbaar		bit(1),
+	nieuwsberichtId		int(10)
 );
 
 CREATE TABLE CategorieAbonnement
 (	
-	mailAbonneeId		int(10) REFERENCES MailAbonnee(id),
-	categorieNaam		VARCHAR(64) REFERENCES Categorie(naam),
+	mailAbonneeId		int(10),
+	categorieNaam		VARCHAR(64),
 	PRIMARY KEY (mailAbonneeId,categorieNaam)
 );
 
 CREATE TABLE GerelateerdNieuws
 (	
-	nieuwsberichtId			int(10) REFERENCES Nieuwsbericht(id),
-	gerelateerdNieuwsberichtId	int(10) REFERENCES Nieuwsbericht(id),
+	nieuwsberichtId			int(10),
+	gerelateerdNieuwsberichtId	int(10),
 	PRIMARY KEY (nieuwsberichtId,gerelateerdNieuwsberichtId)
 );
