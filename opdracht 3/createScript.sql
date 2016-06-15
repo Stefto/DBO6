@@ -1,14 +1,14 @@
 create Table weather (
 		id int not null identity(1,1) Primary key,
-		USAState varchar(30) not null,
-		weatherStation varchar(255),
-		weatherID int,
+		Location varchar(255),
+		Time varchar(50),
+		DewPoint varchar(100),
 		Description varchar(255),
-		Temperature varchar(5),
-		RelativeHumidity varchar(6),
-		Wind varchar(10),
-		Pressure varchar(20),
-		visibillity varchar(30),
-		Windchill varchar(20),
+		Temperature varchar(100),
+		RelativeHumidity varchar(100),
+		Wind varchar(100),
+		Pressure varchar(200),
+		visibillity varchar(200),
+		Windchill varchar(200),
 		Remarks varchar(255)
 );
