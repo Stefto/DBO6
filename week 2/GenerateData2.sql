@@ -34,7 +34,7 @@ datatype_loop: loop
 		WHEN col_datatype in ('int','bigint') THEN SET func_query=concat(func_query,'get_int(), ');
 		WHEN col_datatype in ('varchar','char') THEN SET func_query=concat(func_query,'get_string(',ifnull(col_maxlen,0),'), ');
 		WHEN col_datatype in ('tinyint') THEN SET func_query=concat(func_query,'get_tinyint(), ');
-		WHEN col_datatype in ('bit') THEN SET func_query=concat(func_query, ' , ');
+		WHEN col_datatype in ('bit') THEN SET func_query=concat(func_query, 'get_bit , ');
 		WHEN col_datatype in ('datetime','timestamp') THEN SET func_query=concat(func_query,'get_datetime(), ');
 		WHEN col_datatype in ('float', 'decimal') THEN SET func_query=concat(func_query,'get_float(',col_num_precision,',',col_num_scale,'), ');
 		ELSE SET func_query=concat(func_query,'get_varchar(',ifnull(col_maxlen,0),'), ');
