@@ -9,6 +9,5 @@ create Table weather (
 		Wind varchar(100),
 		Pressure varchar(200),
 		visibillity varchar(200),
-		Windchill varchar(200),
 		Remarks varchar(255)
 );
